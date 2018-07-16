@@ -31,9 +31,7 @@ import retrofit2.Response;
 
 public class DataBaseActivity extends AppCompatActivity {
 
-    APIInterface apiInterface;
 
-    ProgressDialog progressBar;
     private RecyclerView recyclerView;
     private DataBaseAdapter mAdapter;
     DatabaseHandler db;
@@ -48,7 +46,6 @@ public class DataBaseActivity extends AppCompatActivity {
 
         init();
         setOnclick();
-
 
         }
 
@@ -78,7 +75,6 @@ public class DataBaseActivity extends AppCompatActivity {
                             else{
 
                                 Log.e("record ","not");
-                                Log.e("record Data ",""+cn.getName());
                             }
 
 
@@ -125,7 +121,6 @@ public class DataBaseActivity extends AppCompatActivity {
                     else{
 
                         Log.e("record ","not");
-                        Log.e("record Data ",""+cn.getName());
                     }
 
 
