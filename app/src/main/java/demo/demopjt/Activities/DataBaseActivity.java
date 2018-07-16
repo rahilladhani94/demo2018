@@ -35,7 +35,7 @@ public class DataBaseActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DataBaseAdapter mAdapter;
     DatabaseHandler db;
-    Button btnDelete,btnUpdate;
+    Button btnDelete, btnUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class DataBaseActivity extends AppCompatActivity {
         init();
         setOnclick();
 
-        }
+    }
 
     private void setOnclick() {
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -55,38 +55,32 @@ public class DataBaseActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+                List<Contact> contacts = db.getAllContacts();
 
-                        List<Contact> contacts = db.getAllContacts();
-
-                        for (Contact cn : contacts) {
-                            String log = cn.getName() ;
-                            // Writing Contacts to log
-                            Log.e("Name: ", log);
-
-
-                            if(cn.getName().equalsIgnoreCase("30gm (20pouch)")){
+                for (Contact cn : contacts) {
+                    String log = cn.getName();
+                    // Writing Contacts to log
+                    Log.e("Name: ", log);
 
 
-                                db.deleteContact(cn);
-                                Log.e("record ","yes");
-                                Log.e("size ",""+db.getAllContacts().size());
-
-                                }
-                            else{
-
-                                Log.e("record ","not");
-                            }
+                    if (cn.getName().equalsIgnoreCase("30gm (20pouch)")) {
 
 
-                        }
+                        db.deleteContact(cn);
+                        Log.e("record ", "yes");
+                        Log.e("size ", "" + db.getAllContacts().size());
 
+                    } else {
 
-
-
+                        Log.e("record ", "not");
                     }
-                });
 
 
+                }
+
+
+            }
+        });
 
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -94,16 +88,15 @@ public class DataBaseActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-
                 List<Contact> contacts = db.getAllContacts();
 
                 for (Contact cn : contacts) {
-                    String log = cn.getName() ;
+                    String log = cn.getName();
                     // Writing Contacts to log
                     Log.e("Name: ", log);
 
 
-                    if(cn.getName().equalsIgnoreCase("30gm (20pouch)")){
+                    if (cn.getName().equalsIgnoreCase("30gm (20pouch)")) {
 
 
                         cn.setName("asasas");
@@ -113,19 +106,16 @@ public class DataBaseActivity extends AppCompatActivity {
                         db.updateContact(cn);
 
 
-                        Log.e("record ","yes");
+                        Log.e("record ", "yes");
 
 
+                    } else {
 
-                    }
-                    else{
-
-                        Log.e("record ","not");
+                        Log.e("record ", "not");
                     }
 
 
                 }
-
 
 
             }
@@ -137,9 +127,9 @@ public class DataBaseActivity extends AppCompatActivity {
     private void init() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         btnDelete = (Button) findViewById(R.id.btnDelete);
-        btnUpdate= (Button) findViewById(R.id.btnUpdate);
+        btnUpdate = (Button) findViewById(R.id.btnUpdate);
         List<Contact> contacts = db.getAllContacts();
-        mAdapter = new DataBaseAdapter(DataBaseActivity.this,contacts);
+        mAdapter = new DataBaseAdapter(DataBaseActivity.this, contacts);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -147,7 +137,6 @@ public class DataBaseActivity extends AppCompatActivity {
 
 
         mAdapter.notifyDataSetChanged();
-
 
 
     }
