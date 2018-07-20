@@ -23,13 +23,14 @@ import demo.demopjt.ModelClass.CategoryList;
 import demo.demopjt.ModelClass.CategoryMain;
 import demo.demopjt.ModelClass.Productlist;
 import demo.demopjt.R;
+import demo.demopjt.listeners.OnDownloadPdf;
 import demo.demopjt.retrofit.APIClient;
 import demo.demopjt.retrofit.APIInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DataBaseActivity extends AppCompatActivity {
+public class DataBaseActivity extends AppCompatActivity implements OnDownloadPdf {
 
 
     private RecyclerView recyclerView;
@@ -129,7 +130,7 @@ public class DataBaseActivity extends AppCompatActivity {
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnUpdate = (Button) findViewById(R.id.btnUpdate);
         List<Contact> contacts = db.getAllContacts();
-        mAdapter = new DataBaseAdapter(DataBaseActivity.this, contacts);
+        mAdapter = new DataBaseAdapter(DataBaseActivity.this, contacts,this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -142,4 +143,8 @@ public class DataBaseActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onDownloadPdf(String requestId) {
+
+    }
 }

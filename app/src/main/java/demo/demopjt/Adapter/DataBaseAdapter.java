@@ -15,11 +15,13 @@ import java.util.List;
 import demo.demopjt.Database.Contact;
 import demo.demopjt.ModelClass.CategoryList;
 import demo.demopjt.R;
+import demo.demopjt.listeners.OnDownloadPdf;
 
 public class DataBaseAdapter extends RecyclerView.Adapter<DataBaseAdapter.MyViewHolder> {
 
     private List<Contact> moviesList;
     Context mcontext;
+    private OnDownloadPdf onDownloadPdf;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title,price,catid;
@@ -34,9 +36,10 @@ public class DataBaseAdapter extends RecyclerView.Adapter<DataBaseAdapter.MyView
     }
 
 
-    public DataBaseAdapter(Context mcontext, List<Contact> moviesList) {
+    public DataBaseAdapter(Context mcontext, List<Contact> moviesList, OnDownloadPdf onDownloadPdf) {
         this.mcontext = mcontext;
         this.moviesList = moviesList;
+        this.onDownloadPdf = onDownloadPdf;
 
     }
  
@@ -55,6 +58,14 @@ public class DataBaseAdapter extends RecyclerView.Adapter<DataBaseAdapter.MyView
         holder.price.setText(""+movie.getPrice());
         holder.catid.setText(""+movie.getCatid());
 
+        holder.title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onDownloadPdf.onDownloadPdf("ddd");
+
+            }
+        });
     }
  
     @Override
