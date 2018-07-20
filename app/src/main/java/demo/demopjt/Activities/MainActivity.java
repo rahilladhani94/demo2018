@@ -14,6 +14,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +30,9 @@ import demo.demopjt.ModelClass.CategoryList;
 import demo.demopjt.ModelClass.CategoryMain;
 import demo.demopjt.ModelClass.Productlist;
 import demo.demopjt.ModelClass.ProductlistMain;
+import demo.demopjt.ModelClass.SimpleMessageStatusResponse;
 import demo.demopjt.R;
+import demo.demopjt.UIUtil;
 import demo.demopjt.retrofit.APIClient;
 import demo.demopjt.retrofit.APIInterface;
 import retrofit2.Call;
@@ -106,6 +112,73 @@ public class MainActivity extends AppCompatActivity {
 //
 //            }
 //        });
+
+
+
+
+
+
+
+
+
+
+
+
+        ///////////////////////
+
+//        HashMap<String, Object> map = new HashMap<>();
+//
+//        map.put("name", edt_labelname.getText().toString().trim());
+//        map.put("color", selected_color);
+//        ServiceGenerator.ApiInterface apiService =
+//                ServiceGenerator.createService(ServiceGenerator.ApiInterface.class);
+//        Call<SimpleMessageStatusResponse> call = apiService.updateLabel(sessionManager.getKeyAuthtoken(),map,id);
+//        call.enqueue(new Callback<SimpleMessageStatusResponse>() {
+//            @Override
+//            public void onResponse(Call<NewProjectMainResponse> call, Response<NewProjectMainResponse> response) {
+//                UIUtil.dismissDialog();
+//                if (response.isSuccessful()) {
+//                    NewProjectMainResponse registrationResponse = response.body();
+//                    if (registrationResponse.getData() != null)
+//                    {
+//                        AppUtil.Toast(ActivityCreateNewLabel.this,"Label successfully updated");
+//                        ActivityAllLabelsListing.refresh = "yes";
+//                        finish();
+//                    } else {
+//                        AppUtil.Toast(ActivityCreateNewLabel.this,"Something went wrong,Please try again.");
+//                    }
+//                } else {
+//                    if (response.code() == 400) {
+//                        InputStream in = response.errorBody().byteStream();
+//                        String error = AppUtil.getStringRequestBody(in);
+//
+//                        JSONObject jresponse = null;
+//                        try {
+//                            jresponse = new JSONObject(error);
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                        try {
+//                            error = jresponse.getString("error");
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                        // AppUtil.Toast(ActivityCreateNewLabel.this,""+error);
+//
+//                        AppUtil.Toast(ActivityCreateNewLabel.this,"Your session has expired please re login again to continue.");
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<NewProjectMainResponse> call, Throwable t) {
+//                UIUtil.dismissDialog();
+//                AppUtil.Toast(ActivityCreateNewLabel.this,"Something went wrong,Please try again.");
+//                Log.e("TAG", t.toString());
+//            }
+//        });
+
 
     }
 
